@@ -5,7 +5,7 @@ function validar() {
     var user = document.getElementById("inputEmail");
     var pass = document.getElementById("inputPassword");
     if ((user.value !== "") && (pass.value !== "")) {
-        window.location.href = "index.html";
+        window.location.href = "home.html";
     } else {
         alert("Debe completar los campos")
     }
