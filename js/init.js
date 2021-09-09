@@ -44,4 +44,15 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+
+var nombreusuario = localStorage.getItem("usuario") // Obtenemos del localStorage el usuario que guardamos en el login
+
+if (nombreusuario == undefined) { //si lo que encontro en el localStorage esta vacío
+  window.location.href = "index.html" // entonces redirecciona al login
+} else { // sino
+
+var ausuario = document.getElementById("nombreUsuario")  // Obtengo el elemento "a" del HTML a través del ID
+
+ausuario.innerHTML = nombreusuario   // Al elemento "a" le pongo el nombre del usuario
+}
 });
