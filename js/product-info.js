@@ -60,7 +60,7 @@ for(let i = 0; i < lista.length; i++){
         htmlContentToAppend += `
         <div>
         <p>${showProductsURL[posicion].name} </p>
-        
+                
         </div>
         `
 }
