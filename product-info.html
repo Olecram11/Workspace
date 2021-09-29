@@ -16,6 +16,7 @@
 </head>
 
 <body>
+  <!-- menu -->
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="home.html">Inicio</a>
@@ -26,15 +27,70 @@
       <a class="py-2 d-none d-md-inline-block" href="index.html">Login</a>
       <a id="nombreUsuario" class="py-2 d-none d-md-inline-block" href="#"></a>
     </div>
+    <!-- termina menu -->
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega: 03/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2>Descripción del producto</h2>
+        <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
+      </div>
+      <h3 id="productName"></h3>
+      <hr class="my-3">
+      <!-- empieza la estructura de Product Info -->
+      <dl>
+        <dt>Descripción</dt>
+        <dd>
+          <p id="productDescription"></p>
+        </dd>
+
+        <dt>Cantidad de productos vendidos</dt>
+        <dd>
+          <p id="productSoldCount"></p>
+        </dd>
+
+        <dt>Precio del producto</dt>
+        <dd>
+          <p id="productPrice"></p>
+        </dd>
+
+        <dt>Categoría</dt>
+        <dd>
+          <p id="productCategory"></p>
+        </dd>
+
+        <dt>Imágenes ilustrativas</dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="productInfoPicturesGallery">
+          </div>
+        </dd>
+      </dl>
+<!-- Fin de la estructura de Product Info -->
+
+<!-- Comienzan los comentarios -->
+      <div class="row">
+        <div class="list-group" id="comment-section">
+        </div>
+      </div>
+
+      <p>Puntuación</p>
+      <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+      </div>
+      
+      <p class="lead">Comentar</p>
+      <textarea rows="3" cols="20">
+        
+        </textarea><br>
+        <input type="submit" value="Enviar">
+<!-- Terminan los comentarios -->
+        
+<!-- Comienzan los productos relacionados -->
+        <div id="productos-relacionados"></div>
+<!-- Terminan los productos relacionados -->
+
+      <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
-  </div>
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
