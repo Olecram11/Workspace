@@ -56,3 +56,11 @@ var ausuario = document.getElementById("nombreUsuario")  // Obtengo el elemento 
 ausuario.innerHTML = nombreusuario   // Al elemento "a" le pongo el nombre del usuario
 }
 });
+
+document.addEventListener("DOMContentLoaded", function(e){
+
+//  var perfil = localStorage.getItem("miperfil") // Obtenemos del localStorage los datos del perfil
+
+ 
+
+});

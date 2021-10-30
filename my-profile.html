@@ -90,27 +90,41 @@
   </div>
 </nav>
  <!----fin Menu---->
-  </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+
+
+ <div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+      <div class="col-md-3 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold" id=nombreCompleto></span><span class="text-black-50" id=emailshow></span><span> </span></div>
+      </div>
+      <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-right">Configuración del Perfil</h4>
+              </div>
+              <div class="row mt-2">
+                  <div class="col-md-6"><label class="labels">Nombre</label><input type="text" id="nombre" class="form-control" placeholder="Nombre" value=""></div>
+                  <div class="col-md-6"><label class="labels">Apellido</label><input type="text" id="apellido" class="form-control" value="" placeholder="Apellido"></div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-12"><label class="labels">Telefono</label><input type="number" id="telefono" class="form-control" placeholder="Telefono" value=""></div>
+                  <div class="col-md-12"><label class="labels">E-mail</label><input type="email" id="email" class="form-control" placeholder="E-mail" value=""></div>
+                  <div class="col-md-12"><label class="labels">Edad</label><input type="number" id="edad" class="form-control" placeholder="Edad" value=""></div>
+                  
+              </div>
+              
+              <div class="mt-5 text-center"><button class="btn btn-primary profile-button" onclick="miPerfil()" type="button">Guardar cambios</button></div>
+          </div>
+      </div>
+      
   </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+</div>
+</div>
+</div>
+ 
+
+
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
