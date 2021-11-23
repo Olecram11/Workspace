@@ -1,7 +1,19 @@
 var carrito;
+var porcentajeDeEnvio;
 var subtotalDelCarrito;
 const TASA_DE_CAMBIO = 40;
+let DATOSCARRITO = { //creo un objeto que tendrá todos los datos para realizar la compra
+    nombre: "",
+    calle: "",
+    numero: "",
+    esquina: "",
+    carrito: [],
+    porcentaje: "",
+    moneda: TASA_DE_CAMBIO,
+    subtotal: "",
+    formaPago: {},
 
+}
 
 
 function mostrarProducto() {
@@ -83,7 +95,7 @@ function mostrarPrecioEnvio() {
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].checked) {
             precioSubtotal = subtotalDelCarrito
-            var porcentajeDeEnvio = inputs[i].value
+            porcentajeDeEnvio = inputs[i].value
             var mostrarTotal = parseFloat((Math.round(precioSubtotal * (porcentajeDeEnvio / 100))))
             totalCost.innerHTML = mostrarTotal
         }
@@ -114,15 +126,13 @@ function mostrarSubtotales(i) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-    fetch(CART_INFO_URL).then(function (resultObj) {
-            return resultObj.json();
+    getJSONData(CART_INFO_URL).then(function (resultObj) {
+        carrito = resultObj.data.articles
+        mostrarProducto();
+        mostrarSubtotalCarrito();
         })
-        .then(function (resultObj2) {
-            carrito = resultObj2.articles
-            mostrarProducto();
-            mostrarSubtotalCarrito();
-        })
-});
+       
+        });
 
 
 function validarDatos() {
@@ -136,12 +146,29 @@ function validarDatos() {
     vencimiento.classList.remove("is-invalid");
     cuenta.classList.remove("is-invalid");
     // $(`#exampleModal`).modal('hide');
+     // COMPLETAR el objeto de compra
+     //el nombre lo obtiene del localStorage, la direccion,nro,esq lo obtiene de los inputs y el total, porcentaje y carrito lo obtiene de las variables globales al principio del código
+     DATOSCARRITO.nombre=localStorage.getItem("usuario")
+     DATOSCARRITO.calle=document.getElementById("direccionCalle").value
+     DATOSCARRITO.numero=document.getElementById("direccionNro").value
+     DATOSCARRITO.esquina=document.getElementById("direccionEsquina").value
+     DATOSCARRITO.porcentaje=porcentajeDeEnvio
+     DATOSCARRITO.subtotal=subtotalDelCarrito
+     DATOSCARRITO.carrito=carrito
+     
+          
     if (document.getElementById("exampleRadios1").checked) {
         
         if (tarjeta.value !== "" && cvv.value !== "" && vencimiento.value !== "") {
             $(`#exampleModal`).modal('hide');
-            alert("¡Has comprado con éxito!")
-            console.log("entrarif")
+            alert("¡Has comprado con éxito!") //enviar datos al servidor  
+            DATOSCARRITO.formaPago={tarjeta:tarjeta.value, cvv:cvv.value, vencimiento:vencimiento.value}
+            // si la forma de pago es por tarjeta, enviar tarjeta, cvv y vencimiento al DATOSCARRITO
+            fetch("http://localhost:3000/carrito", {
+         method: "POST", headers: {
+             'Content-Type': 'application/json',
+         }, body: JSON.stringify(DATOSCARRITO)
+     })         // envio los datos al servidor con el método post
         } else {
             if (tarjeta.value == "") {
                 tarjeta.classList.add("is-invalid")
@@ -161,6 +188,13 @@ function validarDatos() {
         if (cuenta.value !== "") {
             $(`#exampleModal`).modal('hide');
             alert("¡Has comprado con éxito!")
+            DATOSCARRITO.formaPago={cuenta:cuenta.value}
+            // si la forma de pago es por cuenta bancaria envio solo la cuenta al servidor
+            fetch("http://localhost:3000/carrito", {
+         method: "POST", headers: {
+             'Content-Type': 'application/json',
+         }, body: JSON.stringify(DATOSCARRITO)
+     })
         } else {
             if (cuenta.value == "") {
                 cuenta.classList.add("is-invalid")
